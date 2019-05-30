@@ -1,0 +1,57 @@
+﻿@model IEnumerable<FurnitureStore.Models.Item>
+@{
+    ViewBag.Title = "Shop";
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.itemName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.itemDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        @if (Session["User"] != null)
+        {
+            <th>
+                Action
+            </th>
+        }
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.itemName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.itemDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.price)
+            </td>
+            @if (Session["User"] != null)
+            {
+                <td>
+                    <form action="~/Home/BuyItem" method="post">
+                        <input type="hidden" name="id" value="@item.id" />
+                        <input type="hidden" name="itemName" value="@item.itemName" />
+                        <input type="hidden" name="itemDescription" value="@item.itemDescription" />
+                        <input type="hidden" name="quanity" value="@item.quantity" />
+                        <input type="hidden" name="price" value="@item.price" />
+                        <button type="submit">Buy</button>
+                    </form>
+                </td>
+            }
+        </tr>
+
+    }
+</table>

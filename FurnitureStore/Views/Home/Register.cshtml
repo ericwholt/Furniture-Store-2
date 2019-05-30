@@ -1,0 +1,9 @@
+﻿@{
+    ViewBag.Title = "Register User";
+}
+<form action="~/Home/MakeNewUser" method="post">
+    <p>Username</p><input type="text" name="userName" value="" placeholder="Enter Username" />
+    <p>Password</p><input type="password" name="password" value="" placeholder="Enter Password" />
+    <p>Funds</p><input type="number" name="funds" value="" step=".01" placeholder="Add Funds" />
+    <input type="submit" name="submit" value="Register" />
+</form>
