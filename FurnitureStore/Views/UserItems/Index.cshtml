@@ -1,0 +1,41 @@
+﻿@model IEnumerable<FurnitureStore.Models.UserItem>
+@using FurnitureStore.Models
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Item.itemName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.userName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        User user = (User)Session["User"];
+        if (item.UserID == user.id)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Item.itemName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.userName)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.UserItemId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.UserItemId })
+                </td>
+            </tr>
+        }
+    }
+
+</table>

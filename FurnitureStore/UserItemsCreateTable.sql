@@ -1,0 +1,7 @@
+CREATE TABLE  UserItems (
+UserItemId INT identity(1,1) PRIMARY KEY NOT NULL,
+UserID INT,
+FOREIGN KEY (UserID) REFERENCES Users(id),
+ItemID INT,
+FOREIGN KEY (ItemID) REFERENCES Items(id)
+);
